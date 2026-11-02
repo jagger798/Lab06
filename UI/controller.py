@@ -28,4 +28,42 @@ class Controller:
         self._view.update()
 
     # Altre Funzioni Event Handler
-    # TODO
+    def mostra_strumenti(self, e):
+        lista = self._model.get_strumenti()
+
+        if lista is None:
+            self._view.show_alert("Errore nel caricamento degli strumenti")
+            return
+
+        self._view.lista_strumenti.controls.clear()
+        for s in lista:
+            self._view.lista_strumenti.controls.append(ft.Text(str(s)))
+        self._view.update()
+
+    def cerca_strumenti(self,e):
+        tipo = self._view.input_tipo_strumento.value
+
+        if tipo =="":
+            self._view.show_alert("Inserisci un tipo di strumento da cercare. ")
+            return
+
+        lista = self._model.cerca_strumenti_per_tipo(tipo)
+
+        if lista is None:
+            self._view.show_alert("Errore durante la ricerca.")
+            return
+
+        self._view.lista_strumenti.controls.clear()
+        for s in lista:
+            self.view.lista_strumenti_ricerca.controls.append(ft.Text(str(s)))
+        self._view.update()
+
+
+
+
+
+
+
+
+
+

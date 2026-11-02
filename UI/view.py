@@ -82,10 +82,25 @@ class View:
             ft.Divider(),
 
             # Sezione 3
-            # TODO
+            ft.Text("Strumenti", size=20),
+            ft.Row(
+                controls=[
+                    ft.Button("Mostra", on_click=self.controller.mostra_strumenti),
+                ],
+                alignment=ft.MainAxisAlignment.CENTER
+            ),
+            self.lista_strumenti,
 
             # Sezione 4
-            # TODO
+            ft.Text("Cerca Strumento per Tipo", size=20),
+            ft.Row(
+                controls=[
+                    self.input_tipo_strumento,
+                    ft.Button("Cerca", on_click=self.controller.cerca_strumento),
+                ],
+                alignment=ft.MainAxisAlignment.CENTER
+            ),
+            self.lista_strumenti_ricerca
         )
 
     def cambia_tema(self, e):
